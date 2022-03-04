@@ -336,7 +336,7 @@
         var modules = {};
         var primary = [];
         var secondary = window.Webflow || [];
-        var $ = window.jQuery;
+        // var $ = window.jQuery;
         var $win = $(window);
         var $doc = $(document);
         var isFunction = $.isFunction;
