@@ -5,6 +5,7 @@ import {fetchData} from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import './styles/evolution-apez.webflow-v1.css'
+import Particles from "react-tsparticles";
 // import './styles/cube.css'
 
 const truncate = (input, len) =>
@@ -66,6 +67,7 @@ export const ResponsiveWrapper = styled.div`
   @media (min-width: 767px) {
     flex-direction: row;
   }
+  z-index: 5;
 `;
 
 export const StyledLogo = styled.img`
@@ -75,6 +77,7 @@ export const StyledLogo = styled.img`
   }
   transition: width 0.5s;
   transition: height 0.5s;
+  z-index: 5;
 `;
 
 export const StyledImg = styled.img`
@@ -99,6 +102,7 @@ export const StyledLink = styled.a`
 
 function App() {
     const dispatch = useDispatch();
+    const particleState = 'links' // links || circle || polygon
     const blockchain = useSelector((state) => state.blockchain);
     const data = useSelector((state) => state.data);
     const [claimingNft, setClaimingNft] = useState(false);
@@ -122,7 +126,15 @@ function App() {
         MARKETPLACE_LINK: "",
         SHOW_BACKGROUND: false,
     });
+    const [count, setCount] = useState(1)
 
+    const minus_handle = () => {
+        if (count !== 0)
+            setCount(count - 1)
+    }
+    const positive_handle = () => {
+        setCount(count + 1)
+    }
 
     const claimNFTs = () => {
         let cost = CONFIG.WEI_COST;
@@ -203,15 +215,117 @@ function App() {
                 flex={1}
                 ai={"center"}
                 style={{padding: 60, backgroundColor: "var(--primary)"}}
-                image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
+                // image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
             >
+                <Particles
+                    style={{zIndex: -1}}
+                    options={{
+                        background: {
+                            color: {
+                                value: "#010c1f",
+                            },
+                        },
+                        fpsLimit: 30,
+                        particles: {
+                            size: {
+                                value: particleState === 'links' ? 3 : particleState === 'circle' ? 3 : 71,
+                            },
+                            color: {
+                                value: particleState === 'links' ? '#FFFFFF' : particleState === 'circle' ? '#FFFFFF' : "#2C2E43",
+                            },
+                            collisions: {
+                                enable: true,
+                            },
+                            line_linked: {
+                                "enable": particleState === 'links' && true,
+                                "distance": 300,
+                                "color": "#ffffff",
+                                "opacity": 0.4,
+                                "width": 2
+                            },
+                            move: {
+                                direction: "none",
+                                enable: true,
+                                outMode: "bounce",
+                                random: false,
+                                speed: 1,
+                                straight: false,
+                            },
+                            number: {
+                                density: {
+                                    enable: true,
+                                    area: 800,
+                                },
+                                value: particleState === 'links' ? 30 : particleState === 'circle' ? 30 : 3,
+                            },
+                            opacity: {
+                                value: 0.5,
+                            },
+                            shape: {
+                                type: particleState === 'links' ? 'circle' : particleState === 'snow' ? 'circle' : 'polygon',
+                            },
+                        },
+                        detectRetina: true,
+                    }}
+                />
                 <StyledLogo alt={"logo"} src={"/config/images/logo.png"}/>
 
                 <s.SpacerSmall/>
 
                 <ResponsiveWrapper flex={1} style={{padding: 24}} test>
                     <s.SpacerLarge/>
+
                     <div style={{padding: 10, width: '50%'}}>
+
+                        <div style={{
+                            width: "100%",
+                            border: '4px solid white',
+                            padding: 20,
+                            textAlign: 'center',
+                            borderRadius: 12
+                        }}>
+                            <p style={{fontSize: 50, fontWeight: 700}}>PRE-SALE</p>
+                            <p style={{fontSize: 45, fontWeight: 700}}><span
+                                style={{color: '#61D6C8'}}>{Number(data.totalSupply) == 0 ? ("X" + "/" + CONFIG.MAX_SUPPLY) : ("" + data.totalSupply + "/" + CONFIG.MAX_SUPPLY)}</span> MINTED
+                            </p>
+                            <a target={'_black'} style={{textDecoration: 'none', color: '#61D6C8', fontSize: 17}}
+                               href={CONFIG.SCAN_LINK}>{truncate(CONFIG.CONTRACT_ADDRESS, 15)}</a>
+
+                            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+                                <>
+                                    <s.TextTitle
+                                        style={{textAlign: "center", color: "var(--accent-text)"}}
+                                    >
+                                        The sale has ended.
+                                    </s.TextTitle>
+                                    <s.TextDescription
+                                        style={{textAlign: "center", color: "var(--accent-text)"}}
+                                    >
+                                        You can still find {CONFIG.NFT_NAME} on
+                                    </s.TextDescription>
+                                    <s.SpacerSmall/>
+                                    <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
+                                        {CONFIG.MARKETPLACE}
+                                    </StyledLink>
+                                </>
+                            ) : (
+                                <>
+                                    <p style={{margin: '10px 0', fontSize: 20}}>{CONFIG.DISPLAY_COST} <span
+                                        style={{color: '#61D6C8'}}>Ξ</span> Spaced Ape</p>
+                                    <p>excluding gas fees</p>
+                                    <div style={{width: '100%', display: 'flex'}}>
+                                        <div style={{display: 'flex', margin: '20px auto'}}>
+                                            <div className={'minus-controller'} onClick={minus_handle}><p>-</p></div>
+                                            <div className={'coin-num'}><p>{count}</p></div>
+                                            <div className={'plus-controller'} onClick={positive_handle}><p>+</p></div>
+                                            <button className={'mint-btn'}>MINT</button>
+                                        </div>
+                                    </div>
+                                    <p>Total | {CONFIG.DISPLAY_COST * count} ETH</p>
+                                </>
+                            )}
+                        </div>
+
                         <s.Container
                             flex={2}
                             jc={"center"}
@@ -251,16 +365,16 @@ function App() {
                                     <s.TextTitle
                                         style={{textAlign: "center", color: "var(--accent-text)"}}
                                     >
-                                        The sale has ended.
+                                        yasssssThe sale has ended.
                                     </s.TextTitle>
                                     <s.TextDescription
                                         style={{textAlign: "center", color: "var(--accent-text)"}}
                                     >
-                                        You can still find {CONFIG.NFT_NAME} on
+                                        yasssssYou can still find {CONFIG.NFT_NAME} on
                                     </s.TextDescription>
                                     <s.SpacerSmall/>
                                     <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
-                                        {CONFIG.MARKETPLACE}
+                                        yass{CONFIG.MARKETPLACE}
                                     </StyledLink>
                                 </>
                             ) : (
@@ -306,7 +420,7 @@ function App() {
                                                             color: "var(--accent-text)",
                                                         }}
                                                     >
-                                                        {blockchain.errorMsg}
+                                                        {blockchain.errorMsg} jvhg
                                                     </s.TextDescription>
                                                 </>
                                             ) : null}
@@ -319,7 +433,7 @@ function App() {
                                                     color: "var(--accent-text)",
                                                 }}
                                             >
-                                                {feedback}
+                                                {feedback} ok
                                             </s.TextDescription>
                                             <s.SpacerMedium/>
                                             :(
@@ -341,7 +455,7 @@ function App() {
                                                         color: "var(--accent-text)",
                                                     }}
                                                 >
-                                                    {mintAmount}
+                                                    {mintAmount} jhvjhvb
                                                 </s.TextDescription>
                                                 <s.SpacerMedium/>
                                                 <StyledRoundButton
@@ -364,7 +478,7 @@ function App() {
                                                         getData();
                                                     }}
                                                 >
-                                                    {claimingNft ? "BUSY" : "MINT"}
+                                                    ghvhg {claimingNft ? "BUSY" : "MINT"}
                                                 </StyledButton>
                                             </s.Container>
                                             )
@@ -375,6 +489,7 @@ function App() {
                             <s.SpacerMedium/>
                         </s.Container>
                     </div>
+
                     <div style={{padding: 10, width: '50%', height: 500}}>
                         <div id="w-node-_7091a729-31c6-d62d-5b76-ecf964dc09cd-eecfd6cf"
                              data-w-id="7091a729-31c6-d62d-5b76-ecf964dc09cd"
@@ -382,7 +497,8 @@ function App() {
                             <div className="demo-container">
                                 <div className="demo-wrapper">
                                     <div className="_3d-wrapper">
-                                        <div data-w-id="7091a729-31c6-d62d-5b76-ecf964dc09d9" className="cube-wrapper">
+                                        <div data-w-id="7091a729-31c6-d62d-5b76-ecf964dc09d9"
+                                             className="cube-wrapper">
                                             <div className="cube-front"></div>
                                             <div className="cube-right"></div>
                                             <div className="cube-left"></div>
@@ -395,6 +511,7 @@ function App() {
                             </div>
                         </div>
                     </div>
+
                     <s.SpacerLarge/>
                 </ResponsiveWrapper>
 
@@ -424,6 +541,8 @@ function App() {
                     </s.TextDescription>
                     <s.SpacerSmall/>
                 </s.Container>
+
+
             </s.Container>
         </s.Screen>
     );

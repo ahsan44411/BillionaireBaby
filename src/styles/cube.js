@@ -3,8 +3,8 @@ const defaultPerspective = '-150px';
 // Track the mouse movemont
 let mouseX = 0;
 let mouseY = 0;
-let lastXDeg = 180;
-let lastYDeg = 180;
+let lastXDeg = 0;
+let lastYDeg = 0;
 // The speed of the cube following movement
 const speed = 0.8;
 $('.cube-animation-section').ready(() => {
@@ -19,10 +19,8 @@ function updateMousePosition(e) {
 }
 
 function rotateCube() {
-    lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg
-    ) * speed;
-    lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg
-    ) * speed;
+    lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg) * speed;
+    lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg) * speed;
     let newStyle = `translateZ(${defaultPerspective}) rotateY(${lastXDeg}deg) rotateX(${lastYDeg}deg)`
     $('.cube-wrapper').css('transform', newStyle);
 }
