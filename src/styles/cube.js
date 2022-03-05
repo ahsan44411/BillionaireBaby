@@ -7,19 +7,21 @@ let lastXDeg = 180;
 let lastYDeg = 180;
 // The speed of the cube following movement
 const speed = 0.1;
-$('cube-animation-section').ready(() => {
+$('.cube-animation-section').ready(() => {
     console.log('i ran')
     setInterval(rotateCube, 66)
 })
-$('cube-animation-section').mousemove(updateMousePosition);
+$('.cube-animation-section').mousemove(updateMousePosition);
 
 // Follow mouse movement
 function updateMousePosition(e) {
+    console.log('brother I also ran')
     mouseX = e.pageX / getWidth();
     mouseY = e.pageY / getHeight();
 }
 
 function rotateCube() {
+    console.log('for shizal ma nizal, ma nigga')
     lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg
     ) * speed;
     lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg
