@@ -19,7 +19,6 @@ function updateMousePosition(e) {
 }
 
 function rotateCube() {
-    console.log('78')
     lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg) * speed;
     lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg) * speed;
     let newStyle = `translateZ(${defaultPerspective}) rotateY(${lastXDeg}deg) rotateX(${lastYDeg}deg)`
@@ -28,7 +27,7 @@ function rotateCube() {
 
 // this function return the corresponding angle for an x value
 function getAngle(x) {
-    return 180 - 360 * x;
+    return 0 - 360 * x;
 }
 
 function getWidth() {
