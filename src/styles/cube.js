@@ -3,6 +3,7 @@ const defaultPerspective = '-150px';
 // Track the mouse movemont
 let mouseX = 0;
 let mouseY = 0;
+console.log('hey motherfucker')
 let lastXDeg = 180;
 let lastYDeg = 180;
 // The speed of the cube following movement
