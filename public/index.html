@@ -33,7 +33,9 @@
             integrity="sha256-JJ+CTzT9BxW6YhBTXeyqt5XOI43g3N+f+0Cl1rLqA2k=" crossorigin="anonymous"></script>
     <script defer="" src="https://cdn.jsdelivr.net/npm/fortmatic@2.2.1/dist/fortmatic.js"
             integrity="sha256-lig5wmdkN2v7lLfb1ZBewU5Z3cBlEdOqKvDxSIKPMYo=" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+    <script defer="" src="https://d2frd9q6ak9wai.cloudfront.net/application.js"></script>
+    <link rel="stylesheet" media="all" href="https://d2frd9q6ak9wai.cloudfront.net/application.css">
     <title>Billionaire Baby Club</title>
     <meta name="description" content="Adopt your Billionaire Baby"/>
 </head>
@@ -46,9 +48,75 @@
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
 <script type="application/javascript"
-        src="https://ahsan44411.github.io/BillionaireBaby/src/js/webflow.js"></script>
+        src="https://ahsan44411.github.io/BillionaireBaby/src/js/cube.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
-<![endif] -->
+<script>
+    (function () {
+        var deadline = new Date(1644008400 * 1000);
+
+        function pad(num, size) {
+            var s = "0" + num;
+            return s.substr(s.length - size);
+        }
+
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date()),
+                seconds = Math.floor((t / 1000) % 60),
+                minutes = Math.floor((t / 1000 / 60) % 60),
+                hours = Math.floor((t / (1000 * 60 * 60)) % 24),
+                days = Math.floor(t / (1000 * 60 * 60 * 24)),
+                weeks = Math.floor(days / 7),
+                months = Math.floor(days / 30),
+                years = Math.floor(months / 12);
+            return {
+                'total': Math.max(t, 0),
+                'days': Math.max(days, 0),
+                'hours': Math.max(hours, 0),
+                'minutes': Math.max(minutes, 0),
+                'seconds': Math.max(seconds, 0),
+                'weeks': Math.max(weeks, 0),
+                'months': Math.max(months, 0),
+                'years': Math.max(years, 0),
+            };
+        }
+
+        function clock(id, endtime) {
+            var days = document.getElementById(id + '-days'),
+                hours = document.getElementById(id + '-hours'),
+                minutes = document.getElementById(id + '-minutes'),
+                seconds = document.getElementById(id + '-seconds'),
+                weeks = document.getElementById(id + '-weeks'),
+                months = document.getElementById(id + '-months'),
+                years = document.getElementById(id + '-years');
+            var timeinterval = setInterval(function () {
+                var t = getTimeRemaining(endtime);
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                } else {
+                    if (days) {
+                        days.innerHTML = pad(t.days, 2);
+                    }
+                    if (hours) {
+                        hours.innerHTML = pad(t.hours, 2);
+                    }
+                    minutes.innerHTML = pad(t.minutes, 2);
+                    seconds.innerHTML = pad(t.seconds, 2);
+                    if (weeks) {
+                        weeks.innerHTML = pad(t.weeks, 2);
+                    }
+                    if (months) {
+                        months.innerHTML = pad(t.months, 2);
+                    }
+                    if (years) {
+                        years.innerHTML = pad(t.years, 2);
+                    }
+                }
+            }, 1000);
+        }
+
+        clock('js-clock', deadline);
+    })();
+</script>
 <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>
 </html>

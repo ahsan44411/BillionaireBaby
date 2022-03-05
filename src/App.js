@@ -5,6 +5,7 @@ import {fetchData} from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import './styles/evolution-apez.webflow-v1.css'
+// import './styles/cube.css'
 
 const truncate = (input, len) =>
     input.length > len ? `${input.substring(0, len)}...` : input;
@@ -374,7 +375,7 @@ function App() {
                             <s.SpacerMedium/>
                         </s.Container>
                     </div>
-                    <div style={{padding: 10, backgroundColor: 'red', width: '50%', height: 500}}>
+                    <div style={{padding: 10, width: '50%', height: 500}}>
                         <div id="w-node-_7091a729-31c6-d62d-5b76-ecf964dc09cd-eecfd6cf"
                              data-w-id="7091a729-31c6-d62d-5b76-ecf964dc09cd"
                              className="cube-animation-section wf-section">
