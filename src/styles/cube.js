@@ -1,5 +1,5 @@
 // Global variable
-const defaultPerspective = '-150px';
+const defaultPerspective = '-60px';
 // Track the mouse movemont
 let mouseX = 0;
 let mouseY = 0;
@@ -19,7 +19,6 @@ function updateMousePosition(e) {
 }
 
 function rotateCube() {
-    console.log('yo')
     lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg) * speed;
     lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg) * speed;
     let newStyle = `translateZ(${defaultPerspective}) rotateY(${lastXDeg}deg) rotateX(${lastYDeg}deg)`
