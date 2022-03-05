@@ -6,7 +6,7 @@ let mouseY = 0;
 let lastXDeg = 180;
 let lastYDeg = 180;
 // The speed of the cube following movement
-const speed = 0.3;
+const speed = 0.8;
 $('.cube-animation-section').ready(() => {
     setInterval(rotateCube, 66)
 })
