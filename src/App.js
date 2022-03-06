@@ -7,6 +7,7 @@ import styled from "styled-components";
 import './styles/evolution-apez.webflow-v1.css'
 import Particles from "react-tsparticles";
 // import './styles/cube.css'
+import logo from './images/logo.png'
 
 const truncate = (input, len) =>
     input.length > len ? `${input.substring(0, len)}...` : input;
@@ -64,7 +65,7 @@ export const ResponsiveWrapper = styled.div`
   justify-content: stretched;
   align-items: stretched;
   width: 100%;
-  @media (min-width: 767px) {
+  @media (min-width: 1087px) {
     flex-direction: row;
   }
   z-index: 5;
@@ -210,80 +211,71 @@ function App() {
     }, [blockchain.account]);
 
     return (
-        <s.Screen>
-            <s.Container
-                flex={1}
-                ai={"center"}
-                style={{padding: 60, backgroundColor: "var(--primary)"}}
-                // image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
-            >
-                <Particles
-                    style={{zIndex: -1}}
-                    options={{
-                        background: {
-                            color: {
-                                value: "#010c1f",
-                            },
+        <div style={{width: '100%', height: '100%'}}>
+            <Particles
+                style={{zIndex: -1}}
+                options={{
+                    background: {
+                        color: {
+                            value: "#010c1f",
                         },
-                        fpsLimit: 30,
-                        particles: {
-                            size: {
-                                value: particleState === 'links' ? 3 : particleState === 'circle' ? 3 : 71,
-                            },
-                            color: {
-                                value: particleState === 'links' ? '#FFFFFF' : particleState === 'circle' ? '#FFFFFF' : "#2C2E43",
-                            },
-                            collisions: {
-                                enable: true,
-                            },
-                            line_linked: {
-                                "enable": particleState === 'links' && true,
-                                "distance": 300,
-                                "color": "#ffffff",
-                                "opacity": 0.4,
-                                "width": 2
-                            },
-                            move: {
-                                direction: "none",
-                                enable: true,
-                                outMode: "bounce",
-                                random: false,
-                                speed: 1,
-                                straight: false,
-                            },
-                            number: {
-                                density: {
-                                    enable: true,
-                                    area: 800,
-                                },
-                                value: particleState === 'links' ? 30 : particleState === 'circle' ? 30 : 3,
-                            },
-                            opacity: {
-                                value: 0.5,
-                            },
-                            shape: {
-                                type: particleState === 'links' ? 'circle' : particleState === 'snow' ? 'circle' : 'polygon',
-                            },
+                    },
+                    fpsLimit: 30,
+                    particles: {
+                        size: {
+                            value: particleState === 'links' ? 3 : particleState === 'circle' ? 3 : 71,
                         },
-                        detectRetina: true,
-                    }}
-                />
-                <StyledLogo alt={"logo"} src={"/config/images/logo.png"}/>
-
-                <s.SpacerSmall/>
-
-                <ResponsiveWrapper flex={1} style={{padding: 24}} test>
-                    {/*<s.SpacerLarge/>*/}
-
-                    <div style={{padding: 10, width: '50%', backgroundColor: '#010C1F'}}>
-
+                        color: {
+                            value: particleState === 'links' ? '#FFFFFF' : particleState === 'circle' ? '#FFFFFF' : "#2C2E43",
+                        },
+                        collisions: {
+                            enable: true,
+                        },
+                        line_linked: {
+                            "enable": particleState === 'links' && true,
+                            "distance": 300,
+                            "color": "#ffffff",
+                            "opacity": 0.4,
+                            "width": 2
+                        },
+                        move: {
+                            direction: "none",
+                            enable: true,
+                            outMode: "bounce",
+                            random: false,
+                            speed: 1,
+                            straight: false,
+                        },
+                        number: {
+                            density: {
+                                enable: true,
+                                area: 800,
+                            },
+                            value: particleState === 'links' ? 30 : particleState === 'circle' ? 30 : 3,
+                        },
+                        opacity: {
+                            value: 0.5,
+                        },
+                        shape: {
+                            type: particleState === 'links' ? 'circle' : particleState === 'snow' ? 'circle' : 'polygon',
+                        },
+                    },
+                    detectRetina: true,
+                }}
+            />
+            <div style={{display: 'flex', flexDirection: 'column', padding: 60}}>
+                <img src={logo} style={{margin: '20px auto', zIndex: 5, width: 300}}/>
+                <div className="row">
+                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                         style={{padding: 10, backgroundColor: '#010C1F', zIndex: 5}}>
                         <div style={{
                             width: "100%",
                             border: '4px solid white',
                             padding: "70px 20px",
                             textAlign: 'center',
                             borderRadius: 12
-                        }}>
+                        }}
+                        >
                             <p style={{fontSize: 50, fontWeight: 700}}>PRE-SALE</p>
                             <p style={{fontSize: 45, fontWeight: 700, margin: "10px 0"}}><span
                                 style={{color: '#61D6C8'}}>{Number(data.totalSupply) == 0 ? ("X" + "/" + CONFIG.MAX_SUPPLY) : ("" + data.totalSupply + "/" + CONFIG.MAX_SUPPLY)}</span> MINTED
@@ -315,184 +307,20 @@ function App() {
                                     <p>excluding gas fees</p>
                                     <div style={{width: '100%', display: 'flex'}}>
                                         <div style={{display: 'flex', margin: '20px auto'}}>
-                                            <div className={'minus-controller'} onClick={minus_handle}><p>-</p></div>
-                                            <div className={'coin-num'}><p>{count}</p></div>
-                                            <div className={'plus-controller'} onClick={positive_handle}><p>+</p></div>
+                                            <div className={'minus-controller'} onClick={decrementMintAmount}><p>-</p></div>
+                                            <div className={'coin-num'}><p>{mintAmount}</p></div>
+                                            <div className={'plus-controller'} onClick={incrementMintAmount}><p>+</p></div>
                                             <button className={'mint-btn'}>MINT</button>
                                         </div>
                                     </div>
-                                    <p style={{fontSize: 17, fontWeight: 700}}>Total | {CONFIG.DISPLAY_COST * count} ETH</p>
+                                    <p style={{fontSize: 17, fontWeight: 700}}>Total
+                                        | {CONFIG.DISPLAY_COST * mintAmount} ETH</p>
                                 </>
                             )}
                         </div>
-
-                        {/*
-                        <s.Container
-                            flex={2}
-                            jc={"center"}
-                            ai={"center"}
-                            style={{
-                                backgroundColor: "var(--accent)",
-                                padding: 24,
-                                borderRadius: 24,
-                                border: "4px solid var(--secondary)",
-                                boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
-                            }}
-                        >
-                            <s.TextTitle
-                                style={{
-                                    textAlign: "center",
-                                    fontSize: 35,
-                                    fontWeight: "bold",
-                                    color: "var(--accent-text)",
-                                    fontStyle: "Ubuntu"
-                                }}
-                            >
-                                {Number(data.totalSupply) == 0 ? ("X" + "/" + CONFIG.MAX_SUPPLY) : ("" + data.totalSupply + "/" + CONFIG.MAX_SUPPLY)}
-                            </s.TextTitle>
-                            <s.TextDescription
-                                style={{
-                                    textAlign: "center",
-                                    color: "var(--primary-text)",
-                                }}
-                            >
-                                <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
-                                    {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
-                                </StyledLink>
-                            </s.TextDescription>
-                            <s.SpacerSmall/>
-                            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
-                                <>
-                                    <s.TextTitle
-                                        style={{textAlign: "center", color: "var(--accent-text)"}}
-                                    >
-                                        yasssssThe sale has ended.
-                                    </s.TextTitle>
-                                    <s.TextDescription
-                                        style={{textAlign: "center", color: "var(--accent-text)"}}
-                                    >
-                                        yasssssYou can still find {CONFIG.NFT_NAME} on
-                                    </s.TextDescription>
-                                    <s.SpacerSmall/>
-                                    <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
-                                        yass{CONFIG.MARKETPLACE}
-                                    </StyledLink>
-                                </>
-                            ) : (
-                                <>
-                                    <s.TextTitle
-                                        style={{textAlign: "center", color: "var(--accent-text)"}}
-                                    >
-                                        {CONFIG.DISPLAY_COST} ETH per Billionaire Baby,
-                                    </s.TextTitle>
-                                    <s.TextDescription
-                                        style={{textAlign: "center", color: "var(--accent-text)"}}
-                                    >
-                                        excluding gas fees.
-                                    </s.TextDescription>
-                                    <s.SpacerSmall/>
-                                    {blockchain.account === "" ||
-                                    blockchain.smartContract === null ? (
-                                        <s.Container ai={"center"} jc={"center"}>
-                                            <s.TextDescription
-                                                style={{
-                                                    textAlign: "center",
-                                                    color: "var(--accent-text)",
-                                                }}
-                                            >
-                                                Connect to the {CONFIG.NETWORK.NAME} network
-                                            </s.TextDescription>
-                                            <s.SpacerSmall/>
-                                            <StyledButton
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    dispatch(connect());
-                                                    getData();
-                                                }}
-                                            >
-                                                CONNECT
-                                            </StyledButton>
-                                            {blockchain.errorMsg !== "" ? (
-                                                <>
-                                                    <s.SpacerSmall/>
-                                                    <s.TextDescription
-                                                        style={{
-                                                            textAlign: "center",
-                                                            color: "var(--accent-text)",
-                                                        }}
-                                                    >
-                                                        {blockchain.errorMsg} jvhg
-                                                    </s.TextDescription>
-                                                </>
-                                            ) : null}
-                                        </s.Container>
-                                    ) : (
-                                        <>
-                                            <s.TextDescription
-                                                style={{
-                                                    textAlign: "center",
-                                                    color: "var(--accent-text)",
-                                                }}
-                                            >
-                                                {feedback} ok
-                                            </s.TextDescription>
-                                            <s.SpacerMedium/>
-                                            :(
-                                            <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                                                <StyledRoundButton
-                                                    style={{lineHeight: 0.4}}
-                                                    disabled={claimingNft ? 1 : 0}
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        decrementMintAmount();
-                                                    }}
-                                                >
-                                                    -
-                                                </StyledRoundButton>
-                                                <s.SpacerMedium/>
-                                                <s.TextDescription
-                                                    style={{
-                                                        textAlign: "center",
-                                                        color: "var(--accent-text)",
-                                                    }}
-                                                >
-                                                    {mintAmount} jhvjhvb
-                                                </s.TextDescription>
-                                                <s.SpacerMedium/>
-                                                <StyledRoundButton
-                                                    disabled={claimingNft ? 1 : 0}
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        incrementMintAmount();
-                                                    }}
-                                                >
-                                                    +
-                                                </StyledRoundButton>
-                                            </s.Container>
-                                            <s.SpacerSmall/>
-                                            <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                                                <StyledButton
-                                                    disabled={claimingNft ? 1 : 0}
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        claimNFTs();
-                                                        getData();
-                                                    }}
-                                                >
-                                                    ghvhg {claimingNft ? "BUSY" : "MINT"}
-                                                </StyledButton>
-                                            </s.Container>
-                                            )
-                                        </>
-                                    )}
-                                </>
-                            )}
-                            <s.SpacerMedium/>
-                        </s.Container>
-                        */}
                     </div>
-
-                    <div style={{padding: 10, width: '50%', height: 500}}>
+                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                         style={{padding: 10, height: 500}}>
                         <div id="w-node-_7091a729-31c6-d62d-5b76-ecf964dc09cd-eecfd6cf"
                              data-w-id="7091a729-31c6-d62d-5b76-ecf964dc09cd"
                              className="cube-animation-section wf-section">
@@ -513,13 +341,29 @@ function App() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    {/*<s.SpacerLarge/>*/}
-                </ResponsiveWrapper>
+            <div style={{display: 'flex'}}>
+                <div style={{zIndex: 5, margin: '0 auto', width: '65%'}}>
+                    <p style={{zIndex: 5, color: 'white', textAlign: 'center', marginBottom: 20}}>Please make sure you are connected to the right network (
+                        {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
+                        Once you make the purchase, you cannot undo this action.</p>
+                    <p style={{zIndex: 5, color: 'white', textAlign: 'center'}}>We have set the gas limit to {CONFIG.GAS_LIMIT} for the
+                        contract to
+                        successfully mint your NFT. We recommend that you don't lower the
+                        gas limit.</p>
+                </div>
+            </div>
 
-                <s.SpacerMedium/>
+        </div>
+    );
+}
 
-                <s.Container jc={"center"} ai={"center"} style={{width: "70%"}}>
+export default App;
+
+
+{/*                <s.Container jc={"center"} ai={"center"} style={{width: "70%"}}>
                     <s.TextDescription
                         style={{
                             textAlign: "center",
@@ -542,12 +386,5 @@ function App() {
                         gas limit.
                     </s.TextDescription>
                     <s.SpacerSmall/>
-                </s.Container>
-
-
-            </s.Container>
-        </s.Screen>
-    );
+                </s.Container>*/
 }
-
-export default App;
