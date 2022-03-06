@@ -273,19 +273,19 @@ function App() {
                 <s.SpacerSmall/>
 
                 <ResponsiveWrapper flex={1} style={{padding: 24}} test>
-                    <s.SpacerLarge/>
+                    {/*<s.SpacerLarge/>*/}
 
-                    <div style={{padding: 10, width: '50%'}}>
+                    <div style={{padding: 10, width: '50%', backgroundColor: '#010C1F'}}>
 
                         <div style={{
                             width: "100%",
                             border: '4px solid white',
-                            padding: 20,
+                            padding: "70px 20px",
                             textAlign: 'center',
                             borderRadius: 12
                         }}>
                             <p style={{fontSize: 50, fontWeight: 700}}>PRE-SALE</p>
-                            <p style={{fontSize: 45, fontWeight: 700}}><span
+                            <p style={{fontSize: 45, fontWeight: 700, margin: "10px 0"}}><span
                                 style={{color: '#61D6C8'}}>{Number(data.totalSupply) == 0 ? ("X" + "/" + CONFIG.MAX_SUPPLY) : ("" + data.totalSupply + "/" + CONFIG.MAX_SUPPLY)}</span> MINTED
                             </p>
                             <a target={'_black'} style={{textDecoration: 'none', color: '#61D6C8', fontSize: 17}}
@@ -310,7 +310,7 @@ function App() {
                                 </>
                             ) : (
                                 <>
-                                    <p style={{margin: '10px 0', fontSize: 20}}>{CONFIG.DISPLAY_COST} <span
+                                    <p style={{margin: '20px 0', fontSize: 20}}>{CONFIG.DISPLAY_COST} <span
                                         style={{color: '#61D6C8'}}>Ξ</span> Spaced Ape</p>
                                     <p>excluding gas fees</p>
                                     <div style={{width: '100%', display: 'flex'}}>
@@ -321,11 +321,12 @@ function App() {
                                             <button className={'mint-btn'}>MINT</button>
                                         </div>
                                     </div>
-                                    <p>Total | {CONFIG.DISPLAY_COST * count} ETH</p>
+                                    <p style={{fontSize: 17, fontWeight: 700}}>Total | {CONFIG.DISPLAY_COST * count} ETH</p>
                                 </>
                             )}
                         </div>
 
+                        {/*
                         <s.Container
                             flex={2}
                             jc={"center"}
@@ -488,6 +489,7 @@ function App() {
                             )}
                             <s.SpacerMedium/>
                         </s.Container>
+                        */}
                     </div>
 
                     <div style={{padding: 10, width: '50%', height: 500}}>
@@ -512,7 +514,7 @@ function App() {
                         </div>
                     </div>
 
-                    <s.SpacerLarge/>
+                    {/*<s.SpacerLarge/>*/}
                 </ResponsiveWrapper>
 
                 <s.SpacerMedium/>

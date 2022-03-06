@@ -2750,7 +2750,7 @@ figcaption {
     border-width: 2px;
     border-color: #cd342e;
     background-color: #4d4d4d;
-    background-image: url('../images/ezgif.com-gif-maker.gif');
+    background-image: url('../images/example.gif');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2771,7 +2771,7 @@ figcaption {
     border-width: 2px;
     border-color: #cd342e;
     background-color: #b3b3b3;
-    background-image: url('../images/ezgif.com-gif-maker-1.gif');
+    background-image: url('../images/example.gif');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2792,7 +2792,7 @@ figcaption {
     border-width: 2px;
     border-color: #cd342e;
     background-color: grey;
-    background-image: url('../images/ezgif.com-gif-maker-3.gif');
+    background-image: url('../images/example.gif');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2834,7 +2834,7 @@ figcaption {
     border-width: 2px;
     border-color: #cd342e;
     background-color: #666;
-    background-image: url('../images/ezgif.com-gif-maker-3.gif');
+    background-image: url('../images/example.gif');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2855,7 +2855,7 @@ figcaption {
     border-width: 2px;
     border-color: #cd342e;
     background-color: #ccc;
-    background-image: url('../images/ezgif.com-gif-maker-1.gif');
+    background-image: url('../images/example.gif');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2931,7 +2931,7 @@ figcaption {
     border-width: 2px;
     border-color: #cd342e;
     background-color: #e6e6e6;
-    background-image: url('../images/ezgif.com-gif-maker.gif');
+    background-image: url('../images/example.gif');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -5358,6 +5358,7 @@ figcaption {
 .minus-controller:hover {
     background-color: black;
     color: white;
+    border: 1px solid white;
 }
 .coin-num {
     margin: auto 8px;
@@ -5375,6 +5376,7 @@ figcaption {
 .plus-controller:hover {
     background-color: black;
     color: white;
+    border: 1px solid white;
 }
 .mint-btn {
     font-size: 15px;
@@ -5384,8 +5386,10 @@ figcaption {
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: 700;
+    border: none;
 }
 .mint-btn:hover {
     background-color: black;
     color: white;
+    border: 1px solid white
 }
