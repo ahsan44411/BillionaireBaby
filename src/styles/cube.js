@@ -27,7 +27,7 @@ function rotateCube() {
 
 // this function return the corresponding angle for an x value
 function getAngle(x) {
-    return 0 - 360 * x;
+    return 360 - 180 * x;
 }
 
 function getWidth() {
