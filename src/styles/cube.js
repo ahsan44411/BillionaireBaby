@@ -3,8 +3,8 @@ const defaultPerspective = '60px';
 // Track the mouse movemont
 let mouseX = 0;
 let mouseY = 0;
-let lastXDeg = 180;
-let lastYDeg = 180;
+let lastXDeg = 60;
+let lastYDeg = 60;
 // The speed of the cube following movement
 const speed = 0.8;
 $('.cube-animation-section').ready(() => {

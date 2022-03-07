@@ -319,6 +319,7 @@ function App() {
                             )}
                         </div>
                     </div>
+
                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
                          style={{padding: 10, height: 500}}>
                         <div id="w-node-_7091a729-31c6-d62d-5b76-ecf964dc09cd-eecfd6cf"
