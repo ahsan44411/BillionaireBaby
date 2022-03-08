@@ -8,7 +8,7 @@
   },
   "NFT_NAME": "Billionaire Baby Club",
   "SYMBOL": "BBC",
-  "MAX_SUPPLY": 2095,
+  "MAX_SUPPLY": 2100,
   "WEI_COST": 39500000000000000,
   "DISPLAY_COST": 0.0395,
   "GAS_LIMIT": 280000,

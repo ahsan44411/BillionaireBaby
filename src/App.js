@@ -119,7 +119,7 @@ function App() {
         },
         NFT_NAME: "",
         SYMBOL: "",
-        MAX_SUPPLY: 1,
+        MAX_SUPPLY: 2100,
         WEI_COST: 0,
         DISPLAY_COST: 0,
         GAS_LIMIT: 0,
@@ -302,8 +302,8 @@ function App() {
                                 </>
                             ) : (
                                 <>
-                                    <p style={{margin: '20px 0', fontSize: 20}}>{CONFIG.DISPLAY_COST} <span
-                                        style={{color: '#61D6C8'}}>Ξ</span> Spaced Ape</p>
+                                    <p style={{margin: '20px 0', fontSize: 20}}>{CONFIG.DISPLAY_COST} ETH<span
+                                        style={{color: '#61D6C8'}}>Ξ</span> Billionaire Baby</p>
                                     <p style={{marginBottom: 10}}>excluding gas fees</p>
 
                                     {blockchain.account === "" ||
