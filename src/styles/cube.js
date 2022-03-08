@@ -15,6 +15,7 @@ $('.cube-animation-section').mousemove(updateMousePosition);
 
 // Follow mouse movement
 function updateMousePosition(e) {
+    console.log('hello')
     mouseX = e.pageX / getWidth();
     mouseY = e.pageY / getHeight();
 }
