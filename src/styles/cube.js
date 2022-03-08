@@ -1,5 +1,5 @@
 // Global variable
-const defaultPerspective = '0px';
+const defaultPerspective = '60px';
 let start = 0;
 // Track the mouse movemont
 let mouseX = 0;
