@@ -1,5 +1,5 @@
 // Global variable
-const defaultPerspective = '-180px';
+const defaultPerspective = '0px';
 let start = 0;
 // Track the mouse movemont
 let mouseX = 0;
@@ -32,7 +32,7 @@ function rotateCube() {
 function getAngle(x) {
     if(start === 0) {
         start = start + 1
-        return 360 * x;
+        return 180 - 360 * x;
     } else {
         return 360 * x - 180;
     }
