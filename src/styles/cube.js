@@ -30,12 +30,11 @@ function rotateCube() {
 
 // this function return the corresponding angle for an x value
 function getAngle(x) {
-    if(start === 0) {
-        start = start + 1
-        return 180 - 360 * x;
-    } else {
+    // if(start === 0) {
+    //     start = start + 1
+    //     return 180 - 360 * x;
+    // } else {
         return 360 * x - 180;
-    }
 }
 
 function getWidth() {
