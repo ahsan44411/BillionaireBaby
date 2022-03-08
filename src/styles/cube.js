@@ -1,10 +1,10 @@
 // Global variable
 const defaultPerspective = '0px';
 // Track the mouse movemont
-let mouseX = 180;
-let mouseY = 180;
-let lastXDeg = 0;
-let lastYDeg = 0;
+let mouseX = 0;
+let mouseY = 0;
+let lastXDeg = 180;
+let lastYDeg = 180;
 // The speed of the cube following movement
 const speed = 0.8;
 
