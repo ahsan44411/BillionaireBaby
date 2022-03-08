@@ -1,13 +1,12 @@
 // Global variable
-const defaultPerspective = '-150px';
+const defaultPerspective = '-60px';
 // Track the mouse movemont
-let mouseX = 0;
-let mouseY = 0;
-let lastXDeg = 180;
-let lastYDeg = 180;
+let mouseX = 30;
+let mouseY = 75;
+let lastXDeg = 80;
+let lastYDeg = 90;
 // The speed of the cube following movement
-const speed = 1;
-
+const speed = 0.8;
 $('.cube-animation-section').ready(() => {
     setInterval(rotateCube, 66)
 })
@@ -20,17 +19,15 @@ function updateMousePosition(e) {
 }
 
 function rotateCube() {
-    lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg
-    ) * speed;
-    lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg
-    ) * speed;
+    lastXDeg = lastXDeg + (getAngle(mouseX) - lastXDeg) * speed;
+    lastYDeg = lastYDeg + (getAngle(mouseY) - lastYDeg) * speed;
     let newStyle = `translateZ(${defaultPerspective}) rotateY(${lastXDeg}deg) rotateX(${lastYDeg}deg)`
-    $('.cube').css('transform', newStyle);
+    $('.cube-wrapper').css('transform', newStyle);
 }
 
 // this function return the corresponding angle for an x value
 function getAngle(x) {
-    return 180 - 360 * x;
+    return 0 - 360 * x;
 }
 
 function getWidth() {
