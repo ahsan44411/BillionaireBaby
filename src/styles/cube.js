@@ -34,6 +34,7 @@ function getAngle(x) {
         starting = starting + 1
         return 360 * x;
     } else {
+        console.log('first here')
         return 180 - 360 * x;
     }
 }
