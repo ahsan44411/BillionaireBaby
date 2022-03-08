@@ -1,5 +1,6 @@
 // Global variable
 const defaultPerspective = '-180px';
+let start = 0;
 // Track the mouse movemont
 let mouseX = 0;
 let mouseY = 0;
@@ -29,7 +30,12 @@ function rotateCube() {
 
 // this function return the corresponding angle for an x value
 function getAngle(x) {
-    return 360 * x - 180;
+    if(start === 0) {
+        start = start + 1
+        return 360 * x;
+    } else {
+        return 360 * x - 180;
+    }
 }
 
 function getWidth() {
