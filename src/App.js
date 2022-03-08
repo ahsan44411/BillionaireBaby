@@ -304,17 +304,60 @@ function App() {
                                 <>
                                     <p style={{margin: '20px 0', fontSize: 20}}>{CONFIG.DISPLAY_COST} <span
                                         style={{color: '#61D6C8'}}>Ξ</span> Spaced Ape</p>
-                                    <p>excluding gas fees</p>
-                                    <div style={{width: '100%', display: 'flex'}}>
-                                        <div style={{display: 'flex', margin: '20px auto'}}>
-                                            <div className={'minus-controller'} onClick={decrementMintAmount}><p>-</p></div>
-                                            <div className={'coin-num'}><p>{mintAmount}</p></div>
-                                            <div className={'plus-controller'} onClick={incrementMintAmount}><p>+</p></div>
-                                            <button className={'mint-btn'}>MINT</button>
-                                        </div>
-                                    </div>
-                                    <p style={{fontSize: 17, fontWeight: 700}}>Total
-                                        | {CONFIG.DISPLAY_COST * mintAmount} ETH</p>
+                                    <p style={{marginBottom: 10}}>excluding gas fees</p>
+
+                                    {blockchain.account === "" ||
+                                    blockchain.smartContract === null ? (
+                                        <>
+                                            <p style={{marginBottom: 10}}>Connect to the {CONFIG.NETWORK.NAME} network</p>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    dispatch(connect());
+                                                    getData();
+                                                }}
+                                                className={'mint-btn'}>Connect
+                                            </button>
+                                            {blockchain.errorMsg !== "" ? (
+                                                <>
+                                                    <p
+                                                        style={{
+                                                            margin: '10px 0',
+                                                            textAlign: "center",
+                                                            color: "white",
+                                                        }}
+                                                    >
+                                                        {blockchain.errorMsg}
+                                                    </p>
+                                                </>
+                                            ) : null}
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div style={{width: '100%', display: 'flex'}}>
+                                                <div style={{display: 'flex', margin: '20px auto'}}>
+                                                    <div className={'minus-controller'} onClick={decrementMintAmount}>
+                                                        <p>-</p>
+                                                    </div>
+                                                    <div className={'coin-num'}><p>{mintAmount}</p></div>
+                                                    <div className={'plus-controller'} onClick={incrementMintAmount}>
+                                                        <p>+</p>
+                                                    </div>
+                                                    <button
+                                                        disabled={claimingNft ? 1 : 0}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            claimNFTs();
+                                                            getData();
+                                                        }}
+                                                        className={'mint-btn'}>{claimingNft ? "BUSY" : "MINT"}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <p style={{fontSize: 17, fontWeight: 700}}>Total
+                                                | {CONFIG.DISPLAY_COST * mintAmount} ETH</p>
+                                        </>
+                                    )}
                                 </>
                             )}
                         </div>
@@ -347,10 +390,12 @@ function App() {
 
             <div style={{display: 'flex'}}>
                 <div style={{zIndex: 5, margin: '0 auto', width: '65%'}}>
-                    <p style={{zIndex: 5, color: 'white', textAlign: 'center', marginBottom: 20}}>Please make sure you are connected to the right network (
+                    <p style={{zIndex: 5, color: 'white', textAlign: 'center', marginBottom: 20}}>Please make sure you
+                        are connected to the right network (
                         {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
                         Once you make the purchase, you cannot undo this action.</p>
-                    <p style={{zIndex: 5, color: 'white', textAlign: 'center'}}>We have set the gas limit to {CONFIG.GAS_LIMIT} for the
+                    <p style={{zIndex: 5, color: 'white', textAlign: 'center'}}>We have set the gas limit
+                        to {CONFIG.GAS_LIMIT} for the
                         contract to
                         successfully mint your NFT. We recommend that you don't lower the
                         gas limit.</p>
