@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0x3Ae48fF265A6A40720e0115f99daae45fA15Fd05",
+  "SCAN_LINK": "https://etherscan.io/address/0x3ae48ff265a6a40720e0115f99daae45fa15fd05",
+  "NETWORK": {
+    "NAME": "Ethereum",
+    "SYMBOL": "ETH",
+    "ID": 1
+  },
+  "NFT_NAME": "Billionaire Baby Club",
+  "SYMBOL": "BBC",
+  "MAX_SUPPLY": 2100,
+  "WEI_COST": 39500000000000000,
+  "DISPLAY_COST": 0.0395,
+  "GAS_LIMIT": 280000,
+  "MARKETPLACE": "OpenSea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/billionairebabyclubnftofficial",
+  "SHOW_BACKGROUND": true
+}

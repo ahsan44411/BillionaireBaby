@@ -3589,7 +3589,7 @@ figcaption {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 960px) {
     h1 {
         font-size: 2.5rem;
     }
