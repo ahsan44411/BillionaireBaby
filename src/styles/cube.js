@@ -16,7 +16,7 @@ $('.cube-animation-section').mousemove(updateMousePosition);
 
 // Follow mouse movement
 function updateMousePosition(e) {
-    console.log('hello')
+    starting = starting + 1
     mouseX = e.pageX / getWidth();
     mouseY = e.pageY / getHeight();
 }
@@ -31,10 +31,8 @@ function rotateCube() {
 // this function return the corresponding angle for an x value
 function getAngle(x) {
     if (starting === 0) {
-        starting = starting + 1
         return 360 * x;
     } else {
-        console.log('first here')
         return 180 - 360 * x;
     }
 }
