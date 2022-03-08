@@ -34,7 +34,7 @@ function getAngle(x) {
     //     start = start + 1
     //     return 180 - 360 * x;
     // } else {
-        return 360 * x - 180;
+        return 180 - 360 * x ;
 }
 
 function getWidth() {
