@@ -2925,8 +2925,8 @@ figcaption {
 
 .cube-front {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-style: solid;
     border-width: 2px;
     border-color: #cd342e;
@@ -3589,7 +3589,7 @@ figcaption {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 960px) {
     h1 {
         font-size: 2.5rem;
     }

@@ -263,11 +263,11 @@ function App() {
                     detectRetina: true,
                 }}
             />
-            <div style={{display: 'flex', flexDirection: 'column', padding: 60}}>
-                <img src={logo} style={{margin: '20px auto', zIndex: 5, width: 300}}/>
+            <div style={{display: 'flex', flexDirection: 'column', padding: 30}}>
+                <img src={logo} style={{margin: '20px auto', zIndex: 5, width: 250}}/>
                 <div className="row">
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
-                         style={{padding: 10, backgroundColor: '#010C1F', zIndex: 5}}>
+                    <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                         style={{padding:10 ,backgroundColor: '#010C1F', zIndex: 5}}>
                         <div style={{
                             width: "100%",
                             border: '4px solid white',
@@ -276,11 +276,11 @@ function App() {
                             borderRadius: 12
                         }}
                         >
-                            <p style={{fontSize: 50, fontWeight: 700}}>PRE-SALE</p>
-                            <p style={{fontSize: 45, fontWeight: 700, margin: "10px 0"}}><span
+                            <p style={{fontSize: 40, fontWeight: 700}}>PRE-SALE</p>
+                            <p style={{fontSize: 35, fontWeight: 700, margin: "10px 0"}}><span
                                 style={{color: '#61D6C8'}}>{Number(data.totalSupply) == 0 ? ("X" + "/" + CONFIG.MAX_SUPPLY) : ("" + data.totalSupply + "/" + CONFIG.MAX_SUPPLY)}</span> MINTED
                             </p>
-                            <a target={'_black'} style={{textDecoration: 'none', color: '#61D6C8', fontSize: 17}}
+                            <a target={'_black'} style={{textDecoration: 'none', color: '#61D6C8', fontSize: 14}}
                                href={CONFIG.SCAN_LINK}>{truncate(CONFIG.CONTRACT_ADDRESS, 15)}</a>
 
                             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
@@ -363,8 +363,8 @@ function App() {
                         </div>
                     </div>
 
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
-                         style={{padding: 10, height: 500}}>
+                    <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                         style={{height: 500, padding: 10}}>
                         <div id="w-node-_7091a729-31c6-d62d-5b76-ecf964dc09cd-eecfd6cf"
                              data-w-id="7091a729-31c6-d62d-5b76-ecf964dc09cd"
                              className="cube-animation-section wf-section">
